@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:bottomLeftRadius="@dimen/px44dp"
+        android:bottomRightRadius="@dimen/px44dp"
+        android:topLeftRadius="@dimen/px44dp"
+        android:topRightRadius="@dimen/px44dp" />
+    <gradient
+        android:endColor="#FE6061"
+        android:startColor="@color/new_status_bar" />
+</shape>

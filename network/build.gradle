@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+def dependenciesID=rootProject.ext.newwork_dependenciesID
+android {
+    compileSdkVersion app_android.compileSdkVersion
+    buildToolsVersion app_android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion app_android.minSdkVersion
+        targetSdkVersion app_android.targetSdkVersion
+        versionCode app_android.versionCode
+        versionName app_android.versionName
+
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.google.android.material:material:$app_android.androidXVersion"
+    implementation "androidx.appcompat:appcompat:$app_android.androidXVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$app_android.constraint_version"
+
+    // 一行搞定300行 循环搞定
+    dependenciesID.each {k,v -> api v}
+    //  arouter 专用 注解模块
+    implementation project(":arouter_annotation")
+    implementation project(":base")
+
+    // 使用注解处理器
+    // arouter 专用 注解处理器
+    annotationProcessor project(':arouter_compiler')
+
+
+}

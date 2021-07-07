@@ -1,0 +1,4 @@
+include ':network'
+include ':base'
+include ':base'
+include ':app', ':order', ':personal', ':common', ':arouter_annotation', ':arouter_compiler', ':arouter_api'

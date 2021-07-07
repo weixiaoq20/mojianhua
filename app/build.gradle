@@ -1,0 +1,146 @@
+apply plugin: 'com.android.application'
+if (isRelease) { // 如果是发布版本时，各个模块都不能独立运行
+    apply from: 'tinker-support.gradle'
+}
+
+// 定义变量，同学们注意：可以定义变量，也可以不定义变量
+def app_android = this.getRootProject().ext.app_android;
+def app_dependencies = this.rootProject.ext.app_dependencies;
+
+android {
+    // compileOptions.encoding = "GBK"
+    compileSdkVersion app_android.compileSdkVersion
+    buildToolsVersion app_android.buildToolsVersion
+    defaultConfig {
+        applicationId app_android.applicationId
+        minSdkVersion app_android.minSdkVersion
+        targetSdkVersion app_android.targetSdkVersion
+        versionCode app_android.versionCode
+        versionName app_android.versionName
+        testInstrumentationRunner app_android.testInstrumentationRunner
+
+        // 这个方法接收三个非空的参数，第一个：确定值的类型，第二个：指定key的名字，第三个：传值（必须是String）
+        // 为什么需要定义这个？因为src代码中有可能需要用到跨模块交互，如果是组件化模块显然不行
+        // 切记：不能在android根节点，只能在defaultConfig或buildTypes节点下
+        buildConfigField("boolean", "isRelease", String.valueOf(isRelease))
+
+        // 在gradle文件中配置选项参数值（用于APT传参接收）
+        // 同学们注意：切记：必须写在defaultConfig节点下
+        javaCompileOptions {
+            annotationProcessorOptions {
+                // project.getName() == app
+                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT]
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/res']
+            aidl.srcDirs = ['src/main/aidl']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDirs = ['libs']
+        }
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+    // 签名配置
+    signingConfigs {
+        release {
+            try {
+                storeFile file("./keystore/xunchang-is.keystore")
+                storePassword "xunchang123"
+                keyAlias "xunchang"
+                keyPassword "xunchang123"
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+
+        debug {
+            storeFile file("./keystore/xunchang-is.keystore")
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            shrinkResources false
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    // recommend
+    dexOptions {
+        jumboMode = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // 循环引入第三方库
+    app_dependencies.each {k, v ->
+        // if (k != "aa" && v != "cc") {}
+        implementation v
+    }
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // 公共基础库
+    api project(":common")
+
+    implementation project(":base")
+
+    implementation project(":network")
+    //  arouter 专用 注解模块
+    api project(":arouter_annotation")
+
+    // 使用注解处理器
+    // arouter 专用 注解处理器
+    annotationProcessor project(':arouter_compiler')
+
+    // 如果是集成化模式，做发布版本时。各个模块都不能独立运行了
+    if (isRelease) {
+        // 进if，集成，融为一体（order，personal）
+
+        // 订单模块
+        api project(":order")
+
+        // 个人中心模块
+        api project(":personal")
+
+    }
+}

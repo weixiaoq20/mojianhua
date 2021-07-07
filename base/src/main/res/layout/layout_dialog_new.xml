@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/px650dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/while_20px_fillet"
+        android:minHeight="@dimen/px368dp">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px48dp"
+            android:layout_marginTop="@dimen/px64dp"
+            android:text="提示"
+            android:textColor="@color/title_text_33_content"
+            android:textSize="@dimen/px36dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dialog_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/px48dp"
+            android:layout_marginLeft="@dimen/px48dp"
+            android:layout_marginTop="@dimen/px130dp"
+            android:minLines="2"
+            android:text="说明文字"
+            android:textColor="@color/auxiliary_instructions_66"
+            android:textSize="@dimen/px28dp" />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="@dimen/px180dp"
+            android:layout_height="@dimen/px64dp"
+            android:layout_below="@+id/dialog_content"
+            android:layout_marginTop="@dimen/px60dp"
+            android:layout_marginRight="@dimen/px20dp"
+            android:layout_marginBottom="@dimen/px30dp"
+            android:layout_toLeftOf="@+id/btn_ok"
+            android:background="@drawable/radius_32_eee_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/new_status_bar"
+            android:textSize="@dimen/px28dp" />
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="@dimen/px180dp"
+            android:layout_height="@dimen/px64dp"
+            android:layout_below="@+id/dialog_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/px60dp"
+            android:layout_marginRight="@dimen/px48dp"
+            android:layout_marginBottom="@dimen/px30dp"
+            android:background="@drawable/login_down_bg"
+
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/px28dp" />
+    </RelativeLayout>
+
+</RelativeLayout>
