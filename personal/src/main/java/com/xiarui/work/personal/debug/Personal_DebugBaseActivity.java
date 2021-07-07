@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.xiangxue.common.utils.Cons;
 
-// TODO 同学们注意：这是 测试环境下的代码 Debug
+// TODO 注意：这是 测试环境下的代码 Debug
 public class Personal_DebugBaseActivity extends AppCompatActivity {
 
     @Override

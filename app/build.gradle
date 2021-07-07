@@ -3,7 +3,7 @@ if (isRelease) { // 如果是发布版本时，各个模块都不能独立运行
     apply from: 'tinker-support.gradle'
 }
 
-// 定义变量，同学们注意：可以定义变量，也可以不定义变量
+// 定义变量，注意：可以定义变量，也可以不定义变量
 def app_android = this.getRootProject().ext.app_android;
 def app_dependencies = this.rootProject.ext.app_dependencies;
 
@@ -25,7 +25,7 @@ android {
         buildConfigField("boolean", "isRelease", String.valueOf(isRelease))
 
         // 在gradle文件中配置选项参数值（用于APT传参接收）
-        // 同学们注意：切记：必须写在defaultConfig节点下
+        // 注意：切记：必须写在defaultConfig节点下
         javaCompileOptions {
             annotationProcessorOptions {
                 // project.getName() == app

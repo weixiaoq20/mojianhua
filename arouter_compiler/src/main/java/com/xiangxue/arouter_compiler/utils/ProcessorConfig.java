@@ -6,8 +6,8 @@ public interface ProcessorConfig {
     String AROUTER_PACKAGE =  "com.xiangxue.arouter_annotation.ARouter";
 
     // 接收参数的TAG标记
-    String OPTIONS = "moduleName"; // 同学们：目的是接收 每个module名称
-    String APT_PACKAGE = "packageNameForAPT"; // 同学们：目的是接收 包名（APT 存放的包名）
+    String OPTIONS = "moduleName"; // ：目的是接收 每个module名称
+    String APT_PACKAGE = "packageNameForAPT"; // ：目的是接收 包名（APT 存放的包名）
 
 
     // String全类名

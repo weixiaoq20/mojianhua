@@ -165,7 +165,7 @@ public class ParameterFactory {
             }
         }
         if (methodContent.contains("Serializable")) { // 健壮代码
-            // t.student=(Student) t.getIntent().getSerializableExtra("student");  同学们注意：为了强转
+            // t.student=(Student) t.getIntent().getSerializableExtra("student");  注意：为了强转
             method.addStatement(finalValue + "=($T)" + methodContent, ClassName.get(element.asType()), annotationValue);
         }    // 健壮代码
         else if (methodContent.endsWith(")")) { // 抱歉  全部的 getBooleanExtra  getIntExtra   getStringExtra

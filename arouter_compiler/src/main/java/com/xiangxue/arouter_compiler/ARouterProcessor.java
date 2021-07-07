@@ -38,7 +38,7 @@ import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
 /**
- * 同学们注意：编码此类，记住就是一个字（细心，细心，细心），出了问题debug真的不好调试
+ * 注意：编码此类，记住就是一个字（细心，细心，细心），出了问题debug真的不好调试
  */
 
 // AutoService则是固定的写法，加个注解即可
@@ -245,7 +245,7 @@ public class ARouterProcessor extends AbstractProcessor {
             } else { // ERROR 编译期发生异常
                 messager.printMessage(Diagnostic.Kind.ERROR, "@ARouter注解未按规范配置，如：/app/MainActivity");
             }
-        } // TODO end for  同学们注意：在循环外面了 （此循环结束后，仓库一 缓存一 就存好所有 Path值了）
+        } // TODO end for  注意：在循环外面了 （此循环结束后，仓库一 缓存一 就存好所有 Path值了）
 
         // mAllPathMap 里面有值了
         // 定义（生成类文件实现的接口） 有 Path Group
@@ -433,8 +433,8 @@ public class ARouterProcessor extends AbstractProcessor {
      * @param bean 路由详细信息，最终实体封装类
      */
     private final boolean checkRouterPath(RouterBean bean) {
-        String group = bean.getGroup(); //  同学们，一定要记住： "app"   "order"   "personal"
-        String path = bean.getPath();   //  同学们，一定要记住： "/app/MainActivity"   "/order/Order_MainActivity"   "/personal/Personal_MainActivity"
+        String group = bean.getGroup(); //  ，一定要记住： "app"   "order"   "personal"
+        String path = bean.getPath();   //  ，一定要记住： "/app/MainActivity"   "/order/Order_MainActivity"   "/personal/Personal_MainActivity"
 
         // 校验
         // @ARouter注解中的path值，必须要以 / 开头（模仿阿里Arouter规范）

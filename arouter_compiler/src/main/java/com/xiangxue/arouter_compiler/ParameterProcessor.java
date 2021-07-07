@@ -34,7 +34,7 @@ import javax.tools.Diagnostic;
 
 @AutoService(Processor.class) // 开启
 @SupportedAnnotationTypes({ProcessorConfig.PARAMETER_PACKAGE}) // 我们服务的注解
-@SupportedSourceVersion(SourceVersion.RELEASE_7) // 同学们：这个是必填的哦
+@SupportedSourceVersion(SourceVersion.RELEASE_7) // ：这个是必填的哦
 public class ParameterProcessor extends AbstractProcessor {
 
     private Elements elementUtils; // 类信息

@@ -1,4 +1,4 @@
-// 同学们注意：公共基础库无须作为组件化模块
+// 注意：公共基础库无须作为组件化模块
 apply plugin: 'com.android.library'
 android {
     compileSdkVersion app_android.compileSdkVersion

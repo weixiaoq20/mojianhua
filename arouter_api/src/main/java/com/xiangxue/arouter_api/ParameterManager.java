@@ -5,7 +5,7 @@ import android.util.LruCache;
 
 /**
  * 参数的 加载管理器
- * TODO 同学们：这是用于接收参数的
+ * TODO ：这是用于接收参数的
  *
  *  第一步：查找 Personal_MainActivity$$Parameter
  *  第二步：使用 Personal_MainActivity$$Parameter  this 给他

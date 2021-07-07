@@ -65,7 +65,7 @@ public class BundleManager {
         return this;
     }
 
-    // Derry只写到了这里，同学们可以自己增加 ...
+    // Derry只写到了这里，可以自己增加 ...
 
     // 直接完成跳转
     public Object navigation(Context context) {

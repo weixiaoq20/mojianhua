@@ -26,7 +26,7 @@ android {
 
         // 都是为了 传递给 注解处理器
         // 在gradle文件中配置选项参数值（用于APT传参接收）
-        // 同学们注意：切记：必须写在defaultConfig节点下
+        // 注意：切记：必须写在defaultConfig节点下
         javaCompileOptions {
             annotationProcessorOptions {
                 // project.getName() == order

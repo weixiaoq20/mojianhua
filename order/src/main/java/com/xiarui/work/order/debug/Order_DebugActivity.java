@@ -9,7 +9,7 @@ import com.xiangxue.common.utils.Cons;
 import com.xiarui.work.order.Order_MainActivity;
 import com.xiarui.work.order.R;
 
-// TODO 同学们注意：这是 测试环境下的代码 Debug
+// TODO 注意：这是 测试环境下的代码 Debug
 public class Order_DebugActivity extends Order_DebugBaseActivity {
 
     @Override
